@@ -1,5 +1,4 @@
-# Необходим при замере скорости выполнения кода
-from datetime import datetime as t
+import timeit
 # Нужен для создания словаря в алг. Бойера-Мура
 from collections import defaultdict
 
@@ -36,12 +35,26 @@ def kmp(sub:str, s:str):
             k += 1
     return -1
 
-if __name__ == '__main__':
-    s = input()
-    sub = input()
-    lsub = len(sub)
-    index = kmp(sub, s)
-    if index != -1:
-        print(f"Подстрока {s[index:index+lsub]} найдена под индексом {index}")
-    else:
-        print("Данной подстроки не существует")
+
+s1 = input()
+sub1 = input()
+lsub1 = len(sub1)
+start_time=timeit.default_timer()
+index = kmp(sub1, s1)
+if index != -1:
+    print(f'Подстрока "{s1[index:index+lsub1]}"найдена под индексом {index}')
+else:
+    print("Данной подстроки не существует")
+print(f"Алгоритм Кнута-Морриса-Пратта выполнил работу за {str(timeit.default_timer() - start_time)} сек")
+print()
+
+s2 = input()
+sub2 = input()
+lsub2 = len(sub1)
+start_time=timeit.default_timer()
+index = kmp(sub2, s2)
+if index != -1:
+    print(f'Подстрока "{s1[index:index+lsub1]}"найдена под индексом {index}')
+else:
+    print("Данной подстроки не существует")
+print(f"Алгоритм Кнута-Морриса-Пратта выполнил работу за {str(timeit.default_timer() - start_time)} сек")
