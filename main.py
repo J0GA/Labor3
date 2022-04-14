@@ -19,7 +19,13 @@ def prefix(s):
             j += 1
     return P
 
-def kmp(sub, s):
+def kmp(sub,  s, case, space):
+    if case == "нет" or "Нет":  # если пользователь хочет найти подстроку, неважно в каком регистре строка и подстрока
+        sub = sub.lower()
+        s = s.lower()
+    if space == "нет" or "Нет":  # если пользователь не хочет обращать внимания на пробелы и их количество
+        sub = sub.replace(" ", "")
+        s = s.replace(" ", "")
     k = 0
     l = 0
     P = prefix(sub)
@@ -90,9 +96,10 @@ def bm_search(subStr, line, case, space):
 print("Алгоритм Кнута-Морриса-Пратта")
 s1 = input("Введите строку: ")
 sub1 = input("Введите подстроку: ")
-lsub1 = len(sub1)
+case1 = input("Чувствительность к регистру, напишите да или нет: ")
+space1 = input("Чувствительность к пробелам, напишите да или нет: ")
 start_time=timeit.default_timer()
-index = kmp(sub1, s1)
+index = kmp(sub1, s1, case1, space1)
 if index != -1:
     print(f'Подстрока "{sub1}" найдена под индексом {index}')
 else:
@@ -109,7 +116,10 @@ startTime = timeit.default_timer()
 k = bm_search(sub2, s2, case2, space2)
 print(f'Подстрока "{sub2}" найдена под индексом {k}')
 print(f"Упрощенный алгоритм Бойера-Мура выполнил работу за {str(timeit.default_timer() - startTime)} сек")
+print()
 
+
+print("Пятнашки")
 from queue import PriorityQueue
 
 
@@ -185,5 +195,5 @@ def fifteenGame(startState):
         print(x)
 
 
-startState = [3, 5, 1, 7, 2, 4, 6, 10, 13, 9, 11, 12, 8, 14, 15, 0]
+startState = [1, 2, 3, 4, 5, 7, 11, 8, 9, 6, 12, 15, 13, 10, 14, 0]
 fifteenGame(startState)
