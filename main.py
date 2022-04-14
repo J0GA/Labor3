@@ -98,7 +98,7 @@ s1 = input("Введите строку: ")
 sub1 = input("Введите подстроку: ")
 case1 = input("Чувствительность к регистру, напишите да или нет: ")
 space1 = input("Чувствительность к пробелам, напишите да или нет: ")
-start_time=timeit.default_timer()
+start_time = timeit.default_timer()
 index = kmp(sub1, s1, case1, space1)
 if index != -1:
     print(f'Подстрока "{sub1}" найдена под индексом {index}')
