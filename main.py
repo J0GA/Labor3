@@ -41,6 +41,20 @@ def kmp(sub,  s, case, space):
             k += 1
     return -1
 
+print("Алгоритм Кнута-Морриса-Пратта")
+s1 = input("Введите строку: ")
+sub1 = input("Введите подстроку: ")
+case1 = input("Чувствительность к регистру, напишите да или нет: ")
+space1 = input("Чувствительность к пробелам, напишите да или нет: ")
+start_time = timeit.default_timer()
+index = kmp(sub1, s1, case1, space1)
+if index != -1:
+    print(f'Подстрока "{sub1}" найдена под индексом {index}')
+else:
+    print("Данной подстроки не существует")
+print(f"Алгоритм Кнута-Морриса-Пратта выполнил работу за {str(timeit.default_timer() - start_time)} сек")
+print()
+
 
 def displacement(subStr):
     table = [len(subStr)] * 256
@@ -92,20 +106,6 @@ def bm_search(subStr, line, case, space):
             return k + 1 + spacesNumber
         else:
             return k + 1
-
-print("Алгоритм Кнута-Морриса-Пратта")
-s1 = input("Введите строку: ")
-sub1 = input("Введите подстроку: ")
-case1 = input("Чувствительность к регистру, напишите да или нет: ")
-space1 = input("Чувствительность к пробелам, напишите да или нет: ")
-start_time = timeit.default_timer()
-index = kmp(sub1, s1, case1, space1)
-if index != -1:
-    print(f'Подстрока "{sub1}" найдена под индексом {index}')
-else:
-    print("Данной подстроки не существует")
-print(f"Алгоритм Кнута-Морриса-Пратта выполнил работу за {str(timeit.default_timer() - start_time)} сек")
-print()
 
 print("Упрощенный алгоритм Бойера-Мура")
 s2 = input("Введите строку: ")
